@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Wheater at KMITL</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<style>
+			.card {
+				background-color: white;
+				padding: 20px;
+				margin-top: 20px;
+				}
+			h1 {
+				font-family: 'Aclonica';font-size: 60px;
+				}
+		</style>
+	</head>
+	<body class="container">
+		<div class="card">
+		<center>
+			<br><h1 style = "color:orange">Weather at KMITL</h1><hr>
+			<img src="https://campus.campus-star.com/app/uploads/2015/09/logo-KMITL-1-1.jpg" width="50%" height="75%" />
+		</center>
+		<script type="text/javascript">
+	        	$.getJSON('https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%201225448&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys', function(response) {
+				document.getElementById("weather").innerHTML = response.query.results.channel.item.condition.text
+				document.getElementById("date_time").innerHTML = response.query.results.channel.item.condition.date
+			});
+		</script>
+		<h4>Weather Status : </h4><hr>
+		<p id="weather"><br><br>
+		<h4>Date time : </h4><hr>
+		<p id="date_time"><br><br>
+		<h4>API ?</h4><hr>
+		<p>API คือ การดึงค่าข้อมูลจากเว็บไซด์อื่นๆมาเข้าในเว็บเรา อย่างเช่น เราต้องการรู้ว่าตอนนี้ที่ ม.ลาดกระบัง สภาพอากาศนั้นเป็นอย่างไร มันมีประโยชน์ตรงที่เราไม่ต้องไป copy ข้อมูลมาแก้ไขในเว็บเราบ่อยๆ มันสามารถดึงมาจากเว็บอื่นแล้วมาอัพเดทในเว็บเราทันที อย่างเว็บนี้ผมต้องการที่จะรู้ว่าสภาพอากาศ ณ ตอนนี้ที่ ม.ลาดกระบังนั้นเป็นอย่างไร ผมดึงข้อมูลมาจากเว็บ “https://developer.yahoo.com/weather/” โดยผมเอาข้อมูลสภาพอากาศบริเวณที่ Latitude ที่ "13.7540" และ Longitude ที่ "100.5014" ซึ่งเป็นพิกัดของ ม.ลาดกระบัง โดยในเว็บต้องการู้ว่า woeid ที่เราต้องการข้อมูลสภาพอากาศบริเวณนั้นอย่างเช่นที่ ม.ลาดกระบัง woeid คือ "1225448"</p>
+		<p><b>What woeid :</b> Where On Earth ID</p><hr>
+		<center>
+			<p><b>API form : </b>
+			<a href="https://query.yahooapis.com/v1/public/yql?q=select%20item.condition%20from%20weather.forecast%20where%20woeid%20%3D%201225448&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys"><u>API at KMITL</u></a><b> My Profile : </b><a href="https://www.it.kmitl.ac.th/~it61070045/ITF/Profile/profile.html"><u>Napat Profile</u></a><b> Github : </b><a href="https://github.com/NAPATKRUP"><u>Napatkrup</u></a></p>
+		</center>
+	</div>
+	</body>
+</html>
